@@ -1,0 +1,44 @@
+<style>
+    p {
+        margin: 30px;
+    }
+</style>
+
+{% block content %}
+    <h1>Create an Account</h1>
+    <form action="" method="POST">
+        {{form.hidden_tag() }}
+        <p>
+            {{ form.first_name.label }}<br>
+            {{ form.first_name(size=32) }}
+        </p>
+        <p>
+            {{ form.last_name.label }}<br>
+            {{ form.last_name(size=32) }}
+        </p>
+        <p>
+            {{ form.email_address.label }}<br>
+            {{ form.email_address(size=32) }}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}
+        </p>
+        <p>
+            {{ form.confirm_password.label }}<br>
+            {{ form.confirm_password(size=32) }}
+        </p>
+        <p>
+            {{ form.phone_number.label }}<br>
+            {{ form.phone_number(size=32) }}
+        </p>
+        <p style="font-size:130%;"> Security Questions </p>
+        <p>
+            {{ form.security_questions.label }}<br>
+            {{ form.security_questions }}
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit() }}</p>
+
+    </form>
+{% endblock %}
