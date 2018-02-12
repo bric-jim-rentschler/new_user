@@ -1,15 +1,25 @@
-<html>
+<style>
+    h1{
+    outline: 2px solid #D3D3D3;
+    outline-offset: -10px;
+    padding-bottom: 15px;
+    text-align: center;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    }
+
+</style>
+<head>
+    <h1><br>Loyalty Program</h1>
+</head>
 <body>
-    <hr>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        {% endwith %}
-        {% block content %}{% endblock %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
 </body>
-</html>

@@ -1,11 +1,55 @@
 <style>
     p {
+        padding-left: 50px;
+        font-family: Tahoma, Verdana, Segoe, sans-serif;
+        font-size: 12px;
+        font-weight: bold
+    }
+    h2 {
         padding-left: 30px;
+        font-family: Tahoma, Verdana, Segoe, sans-serif;
+     }
+
+    .boxed{
+      padding-top: 5px;
+      padding-right: 5px;
+      padding-bottom: 5px;
+      padding-left: 5px;
+      position:absolute;
+      border: 1px solid #D3D3D3;
+      top:30%;
+      left:40%;
+      margin-top:-50px; /* this is half the height of your div*/
+      margin-left:-100px
+      font-family: Tahoma, Verdana, Segoe, sans-serif;
+      font-size: 12px;
+    }
+    .button{
+        color: #800020;
+        border-radius: 6px;
+        width: 200px;
+        height: 30px;
+        font-weight: bold;
+        font-size: 11px;
     }
 </style>
 {% extends "base.html" %}
 {% block content %}
-    <h1>Create an Account</h1>
+    <body>
+    <div class="boxed">
+        <div style="font-weight: bold; font-family: Tahoma, Verdana, Segoe, sans-serif;">  With an Account you can register and<br>
+              manage your gift cards and
+              participate<br> in sweepstakes<br>
+        </div>
+        <ul style="font-family: Tahoma, Verdana, Segoe, sans-serif;">
+            <li>Register any Gift Card.</li>
+            <li>Transfer money between cards.</li>
+            <li>Track your rewards</li>
+            <li>Automatically reload your Card balance.</li>
+        </ul>
+    </div>
+    <div id="Form">
+    <h2>Create an Account</h2>
     <form action="" method="POST">
         {{form.hidden_tag() }}
         <p>
@@ -24,7 +68,7 @@
         </p>
         <p>
             {{ form.email_address.label }}<br>
-            <div style="font-size:80%; padding-left:30px; font-style:italic">This will be your username</div>
+            <div style="font-size:80%; padding-left:50px; font-style:italic">This will be your username</div>
         </p>
         <p>
             {{ form.email_address(size=32) }}
@@ -39,6 +83,7 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
+
         <p>
             {{ form.confirm_password.label }}<br>
             {{ form.confirm_password(size=32) }}
@@ -53,10 +98,13 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p style="font-size:130%;"> Security Questions </p>
+        <p style="font-size:110%;"> Security Questions </p>
         <p>
             {{ form.security_questions.label }}<br>
             {{ form.security_questions }}
+            {% for error in form.security_questions.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
         </p>
         <p>
             {{ form.security_answers.label }}<br>
@@ -65,18 +113,22 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p style="font-size:130%;"> Communication Preferences </p>
+        <p style="font-size:110%;"> Communication Preferences </p>
 
-        <p>{{ form.sweepstakes() }} {{ form.sweepstakes.label}}
+        <p style="font-weight: normal;">{{ form.sweepstakes() }} {{ form.sweepstakes.label}}
             <a title="link opens in new window" href="https://pages.ebay.com/help/policies/user-agreement.html" target="_blank">See Sweepstakes rules</a>
         </p>
-        <p style="font-size:70%;">Note: You can not opt out of transactional emails</p>
-        <p>{{ form.submit() }}</p>
-        <div style="padding-left:30px; font-size:70%;">By clicking this button, I agree to the<br>
+        <p style="font-weight: normal;">{{ form.promotions() }} {{ form.promotions.label}}</p>
+        <p style="font-size:60%; font-weight: normal; font-style:italic">Note: You can not opt out of transactional emails</p>
+        <p>{{ form.submit(class_="button") }}</p>
+        <div style="padding-left:50px; font-size:70%; font-family: Tahoma, Verdana, Segoe, sans-serif;">By clicking this button, I agree to the<br>
             <a title="link opens in new window" href="https://pages.ebay.com/help/policies/user-agreement.html" target="_blank">Terms of Use</a>
             and
-            <a title="link opens in new window" href="https://pages.ebay.com/help/policies/user-agreement.html" target="_blank">privacy policy</a>
+            <a title="link opens in new window" href="https://pages.ebay.com/help/policies/user-agreement.html" target="_blank">Privacy Policy</a>
         </div>
-
     </form>
+    </div>
+
+    </body>
+
 {% endblock %}
