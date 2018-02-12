@@ -1,9 +1,9 @@
 <style>
     p {
-        margin: 30px;
+        padding-left: 30px;
     }
 </style>
-
+{% extends "base.html" %}
 {% block content %}
     <h1>Create an Account</h1>
     <form action="" method="POST">
@@ -11,34 +11,72 @@
         <p>
             {{ form.first_name.label }}<br>
             {{ form.first_name(size=32) }}
+            {% for error in form.first_name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
         </p>
         <p>
             {{ form.last_name.label }}<br>
             {{ form.last_name(size=32) }}
+            {% for error in form.last_name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
         </p>
         <p>
             {{ form.email_address.label }}<br>
+            <div style="font-size:80%; padding-left:30px; font-style:italic">This will be your username</div>
+        </p>
+        <p>
             {{ form.email_address(size=32) }}
+            {% for error in form.email_address.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
         </p>
         <p>
             {{ form.password.label }}<br>
             {{ form.password(size=32) }}
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
         </p>
         <p>
             {{ form.confirm_password.label }}<br>
             {{ form.confirm_password(size=32) }}
+            {% for error in form.confirm_password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
         </p>
         <p>
             {{ form.phone_number.label }}<br>
             {{ form.phone_number(size=32) }}
+            {% for error in form.phone_number.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
         </p>
         <p style="font-size:130%;"> Security Questions </p>
         <p>
             {{ form.security_questions.label }}<br>
             {{ form.security_questions }}
         </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>
+            {{ form.security_answers.label }}<br>
+            {{ form.security_answers(size=32) }}
+            {% for error in form.security_answers.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p style="font-size:130%;"> Communication Preferences </p>
+
+        <p>{{ form.sweepstakes() }} {{ form.sweepstakes.label}}
+            <a title="link opens in new window" href="https://pages.ebay.com/help/policies/user-agreement.html" target="_blank">See Sweepstakes rules</a>
+        </p>
+        <p style="font-size:70%;">Note: You can not opt out of transactional emails</p>
         <p>{{ form.submit() }}</p>
+        <div style="padding-left:30px; font-size:70%;">By clicking this button, I agree to the<br>
+            <a title="link opens in new window" href="https://pages.ebay.com/help/policies/user-agreement.html" target="_blank">Terms of Use</a>
+            and
+            <a title="link opens in new window" href="https://pages.ebay.com/help/policies/user-agreement.html" target="_blank">privacy policy</a>
+        </div>
 
     </form>
 {% endblock %}
