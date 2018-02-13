@@ -5,7 +5,8 @@ from app.forms import CreateAccountForm
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html', title='Home')
+    return render_template('index.html', title='Index')
+
 
 @app.route('/createaccount', methods=['GET', 'POST'])
 def newuser():
@@ -15,5 +16,9 @@ def newuser():
             form.first_name.data, form.last_name.data, form.email_address.data
             , form.password.data, form.confirm_password.data, form.phone_number.data
             , form.security_answers.data))
-        return redirect('/index')
+        return redirect('/confirmation')
     return render_template('create_account.html', title='Create Account', form=form)
+
+@app.route('/confirmation')
+def confirmation():
+    return render_template('confirmation.html', title='Confirmation')
